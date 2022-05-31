@@ -1,0 +1,15 @@
+﻿@model Product
+
+<div class="card">
+                <div class="card-body">
+                  <h4 class="card-title">Delete Product</h4>
+                  <form method="post" asp-route-id="@Model.Id" class="forms-sample">
+                    <div class="form-group">
+                      <label asp-for="@Model.Title">Please type <strong>@Model.Title</strong> if you are sure for delete this product</label>
+                      <input asp-for="@Model.Title" value="" class="form-control" placeholder="Name">
+                    </div>
+                    <button type="submit" class="btn btn-primary mr-2">Submit</button>
+                    <a asp-area="admin" asp-controller="product" asp-action="details" asp-route-id="@Model.Id" class="btn btn-light">Cancel</a>
+                  </form>
+                </div>
+              </div>

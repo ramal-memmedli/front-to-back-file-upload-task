@@ -1,0 +1,42 @@
+﻿@model List<Category>
+
+<div class="col-lg-12 grid-margin stretch-card">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between">
+                <a asp-area="admin" asp-controller="dashboard" asp-action="index" class="btn btn-primary mb-4">Go back</a>
+                <a asp-area="admin" asp-controller="category" asp-action="create" class="btn btn-success mb-4">Create new category</a>
+            </div>
+            <h4 class="card-title">Categories</h4>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                Name
+                            </th>
+                            <th>
+                                Settings
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (Category category in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @category.Name
+                                </td>
+                                <td>
+                                    <a asp-area="admin" asp-controller="category" asp-action="details" asp-route-id="@category.Id" class="btn btn-primary">Details</a>
+                                    <a asp-area="admin" asp-controller="category" asp-action="update" asp-route-id="@category.Id" class="btn btn-warning">Update</a>
+                                    <a asp-area="admin" asp-controller="category" asp-action="delete" asp-route-id="@category.Id" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+﻿@model Product
+
+@{
+    List<Category> categories = ViewData["Categories"] as List<Category>;
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Create new product</h4>
+        <form enctype="multipart/form-data" method="post" class="forms-sample">
+            <div class="form-group">
+                <label asp-for="@Model.Title">Product title</label>
+                <input value="@Model.Title" asp-for="@Model.Title" class="form-control" placeholder="Title">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.Price">Product price</label>
+                <input value="@Model.Price" asp-for="@Model.Price" class="form-control" placeholder="Price">
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.CategoryId">Category</label>
+                <select asp-for="@Model.CategoryId" class="form-control">
+                    @foreach (Category category in categories)
+                    {
+                        if(category.Id == Model.CategoryId)
+                        {
+                            <option selected value="@category.Id">@category.Name</option>
+                        }else
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImageFile">Product image</label>
+                <input asp-for="ImageFile" accept="image/*" class="form-control">
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary mr-2">Submit</button>
+            <button asp-area="admin" asp-controller="product" asp-action="index" class="btn btn-light">Cancel</button>
+        </form>
+    </div>
+</div>

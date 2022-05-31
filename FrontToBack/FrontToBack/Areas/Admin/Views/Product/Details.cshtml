@@ -1,0 +1,53 @@
+﻿@model Product
+
+<div class="card">
+    <div class="card-body">
+        <div class="d-flex justify-content-between">
+            <a asp-area="admin" asp-controller="product" asp-action="index" class="btn btn-primary mb-4">Go back</a>
+        </div>
+        <h4 class="card-title">Product</h4>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                            Image
+                        </th>
+                        <th>
+                            Title
+                        </th>
+                        <th>
+                            Price
+                        </th>
+                        <th>
+                            Category
+                        </th>
+                        <th>
+                            Settings
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td class="py-1">
+                                <img src="~/assets/uploads/products/@Model.ProductImages?[0].Image.Name" alt="image" />
+                            </td>
+                            <td>
+                                @Model.Title
+                            </td>
+                            <td>
+                                $ @Model.Price
+                            </td>
+                            <td>
+                                @Model.Category.Name
+                            </td>
+                            <td>
+                                <a asp-area="admin" asp-controller="product" asp-action="update" asp-route-id="@Model.Id" class="btn btn-warning">Update</a>
+                                <a asp-area="admin" asp-controller="product" asp-action="delete" asp-route-id="@Model.Id" class="btn btn-danger">Delete</a>
+                            </td>
+                        </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

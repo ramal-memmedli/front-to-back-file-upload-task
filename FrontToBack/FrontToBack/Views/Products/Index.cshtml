@@ -1,0 +1,44 @@
+﻿@model ProductsVM
+
+<section id="products">
+            <div class="container">
+                <div class="row pt-5">
+                    <div class="col-12 d-flex justify-content-between">
+                        <ul class="category-mobile d-md-none list-unstyled">
+                            <li>
+                                <a href="" class="categories mr-2">Categories</a>
+                                <i class="fas fa-caret-down"></i>
+                                <ul class="category list-unstyled" style="display: none;">
+                                    <li><a href="" data-id="all">All</a></li>
+                                    @foreach (Category category in Model.Categories)
+                                    {
+                                        <li><a href="" data-id="@category.Name.ToLower()">@category.Name</a></li>
+                                    }
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="category d-none d-md-flex list-unstyled">
+                            <li><a href="" data-id="all">All</a></li>
+                            @foreach (Category category in Model.Categories)
+                            {
+                                <li><a href="" data-id="@category.Name.ToLower()">@category.Name</a></li>
+                            }
+                        </ul>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="" class="mr-2">Filter</a>
+                                <i class="fas fa-caret-down"></i>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="productsLoadMoreSection" class="row">
+                    <partial name="_ProductPartial"/>
+                </div>
+                <div class="row justify-content-center my-5">
+                    <div class="col-lg-6 d-flex justify-content-center">
+                        <a id="loadMoreBtn" class="btn btn-outline">Load more</a>
+                    </div>
+                </div>
+            </div>
+        </section>
